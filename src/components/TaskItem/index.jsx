@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import {
   markCompleted,
   deleteTask,
@@ -11,6 +13,15 @@ const TaskItem = ({ task }) => {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(task.title);
 
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: task.id });
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+    cursor: "grab",
+  };
+
   const handleSave = () => {
     dispatch(editTasks({ id: task.id, title }));
     setEditing(false);
@@ -21,7 +32,13 @@ const TaskItem = ({ task }) => {
   };
 
   return (
-    <li className={`task-item${task.isCompleted ? " completed" : ""}`}>
+    <li
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className={`task-item${task.isCompleted ? " completed" : ""}`}
+    >
       {editing ? (
         <>
           <input

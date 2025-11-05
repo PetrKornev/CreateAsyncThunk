@@ -24,6 +24,9 @@ const listSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
+    reorderTasks: (state, action) => {
+      state.todo = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getTodos.fulfilled, (state, action) => {
@@ -105,4 +108,4 @@ const listSlice = createSlice({
 });
 
 export default listSlice.reducer;
-export const { setFilter } = listSlice.actions;
+export const { setFilter, reorderTasks } = listSlice.actions;
