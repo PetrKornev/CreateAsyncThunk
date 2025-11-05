@@ -36,7 +36,6 @@ const TaskItem = ({ task }) => {
       ref={setNodeRef}
       style={style}
       {...attributes}
-      {...listeners}
       className={`task-item${task.isCompleted ? " completed" : ""}`}
     >
       {editing ? (
@@ -56,11 +55,22 @@ const TaskItem = ({ task }) => {
             type="checkbox"
             checked={task.isCompleted}
             onChange={() => dispatch(markCompleted(task.id))}
+            onMouseDown={(e) => e.stopPropagation()}
           />
-          <span className="title">{task.title}</span>
+          <span className="title" {...listeners}>
+            {task.title}
+          </span>
           <div className="task-actions">
-            <button onClick={() => setEditing(true)}>Редактировать</button>
-            <button onClick={() => dispatch(deleteTask(task.id))}>
+            <button
+              onClick={() => setEditing(true)}
+              onMouseDown={(e) => e.stopPropagation}
+            >
+              Редактировать
+            </button>
+            <button
+              onClick={() => dispatch(deleteTask(task.id))}
+              onMouseDown={(e) => e.stopPropagation}
+            >
               Удалить
             </button>
           </div>
