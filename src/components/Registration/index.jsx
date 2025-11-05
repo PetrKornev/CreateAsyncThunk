@@ -107,7 +107,11 @@ const Registration = () => {
 
           <div>
             <label>Пол:</label>
-            <div role="group" aria-labelledby="gender-group">
+            <div
+              role="group"
+              aria-labelledby="gender-group"
+              className="radio-row"
+            >
               <label>
                 <Field type="radio" name="gender" value="male" />
                 Мужской

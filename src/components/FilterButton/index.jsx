@@ -5,13 +5,13 @@ const FilterButton = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div className="filters">
       <button onClick={() => dispatch(setFilter("all"))}>Все</button>
       <button onClick={() => dispatch(setFilter("active"))}>Активные</button>
       <button onClick={() => dispatch(setFilter("completed"))}>
         Выполненные
       </button>
-    </>
+    </div>
   );
 };
 

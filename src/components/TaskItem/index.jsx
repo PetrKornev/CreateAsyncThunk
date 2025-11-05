@@ -21,7 +21,7 @@ const TaskItem = ({ task }) => {
   };
 
   return (
-    <li>
+    <li className={`task-item${task.isCompleted ? " completed" : ""}`}>
       {editing ? (
         <>
           <input
@@ -29,7 +29,9 @@ const TaskItem = ({ task }) => {
             onChange={(e) => setTitle(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <button onClick={handleSave}>Сохранить</button>
+          <div className="task-actions">
+            <button onClick={handleSave}>Сохранить</button>
+          </div>
         </>
       ) : (
         <>
@@ -38,9 +40,13 @@ const TaskItem = ({ task }) => {
             checked={task.isCompleted}
             onChange={() => dispatch(markCompleted(task.id))}
           />
-          {task.title}
-          <button onClick={() => setEditing(true)}>Редактировать</button>
-          <button onClick={() => dispatch(deleteTask(task.id))}>Удалить</button>
+          <span className="title">{task.title}</span>
+          <div className="task-actions">
+            <button onClick={() => setEditing(true)}>Редактировать</button>
+            <button onClick={() => dispatch(deleteTask(task.id))}>
+              Удалить
+            </button>
+          </div>
         </>
       )}
     </li>

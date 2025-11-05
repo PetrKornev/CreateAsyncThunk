@@ -12,7 +12,7 @@ const ListOfTasks = () => {
   });
 
   return (
-    <ul>
+    <ul className="task-list">
       {filteredTasks.map((task) => (
         <TaskItem key={task.id} task={task} />
       ))}
