@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://todo-redev.herokuapp.com/api",
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",

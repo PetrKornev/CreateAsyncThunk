@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { todoAPI } from "../../api/api";
-import { act } from "react";
 
 export const getToken = createAsyncThunk(
   "auth/getToken",

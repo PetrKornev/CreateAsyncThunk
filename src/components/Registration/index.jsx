@@ -1,8 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { registration, clearMessage } from "../../redux/slices/authSlice";
-import { useEffect } from "react";
 
 const Registration = () => {
   const dispatch = useDispatch();
